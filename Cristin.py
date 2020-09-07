@@ -8,7 +8,7 @@ from pandas.io.json import json_normalize
 ferdig = False
 counter = 1
 thisPage = requests.get("https://api.cristin.no/v2/results?institution=7548&per_page=1000")
-sys.stdout.write("Arbeider")
+sys.stdout.write("Working")
 
 rawData = json.loads(thisPage.text)
 data = json_normalize(rawData)
@@ -28,10 +28,10 @@ while not ferdig:
         rawData = json.loads(nextPage.text)
         data = data.append(json_normalize(rawData), sort=True)
         counter = counter + 1
-        sys.stdout.write(" Ferdig!")
-        print(f"\nSiste side i API-kallet er: https://api.cristin.no/v2/results?institution=7548&page={counter}&per_page=1000")
+        sys.stdout.write(" Done!")
+        print(f"\nThe last page of the API call is: https://api.cristin.no/v2/results?institution=7548&page={counter}&per_page=1000")
         ferdig = True
-data.to_excel("publikasjoner.xlsx", index=False)
+data.to_excel("Publications.xlsx", index=False)
 
 
 ### GET SPECIFIC PAGE, REMOVE COLUMNS, RENAME COLUMNS, PRINT TO .XLSX ###
