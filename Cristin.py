@@ -32,6 +32,6 @@ while not done:
         data = data.append(json_normalize(rawData), sort=True)
         counter = counter + 1
         sys.stdout.write(" Done!")
-        print(f"\nThe last page of the API call is: https://api.cristin.no/v2/results?institution=7548&page={counter}&per_page=1000")
+        print(f"\nThe last page of the API call is: https://api.cristin.no/v2/results?institution=7gi548&page={counter}&per_page=1000")
         done = True
 data.to_excel("Publications.xlsx", index=False)
