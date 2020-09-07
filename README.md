@@ -1,6 +1,3 @@
-# Cristin-API
-A repository for collecting data from Current research information system in Norway.
-
 # [Cristin.py](https://github.com/marhaasa/Cristin-API/blob/master/Cristin.py)
 A script for collecting and storing publications related to a specific institution in .xlsx.
 
