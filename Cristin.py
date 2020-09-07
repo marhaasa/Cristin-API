@@ -9,6 +9,10 @@ ferdig = False
 counter = 1
 thisPage = requests.get("https://api.cristin.no/v2/results?institution=7548&per_page=1000")
 sys.stdout.write("Arbeider")
+
+rawData = json.loads(thisPage.text)
+data = json_normalize(rawData)
+
 while not ferdig:
     nextPage = requests.get(thisPage.links["next"]["url"])
     try:
@@ -18,13 +22,16 @@ while not ferdig:
                 counter = counter + 1
                 sys.stdout.flush()
                 sys.stdout.write(".")
+                rawData = json.loads(thisPage.text)
+                data = data.append(json_normalize(rawData), sort=True)
     except KeyError:
+        rawData = json.loads(nextPage.text)
+        data = data.append(json_normalize(rawData), sort=True)
         counter = counter + 1
         sys.stdout.write(" Ferdig!")
         print(f"\nSiste side i API-kallet er: https://api.cristin.no/v2/results?institution=7548&page={counter}&per_page=1000")
         ferdig = True
-
-
+data.to_excel("publikasjoner.xlsx", index=False)
 
 
 ### GET SPECIFIC PAGE, REMOVE COLUMNS, RENAME COLUMNS, PRINT TO .XLSX ###
