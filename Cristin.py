@@ -53,7 +53,7 @@ if len(cleanData.index) == int(totalHits):
     flatDetails.to_excel("Publications.xlsx", index=False)
     print("=== Publications.xlsx complete ===")
 else:
-        print("\n### ERROR WHILE FETCHING DATA ###")
-        print("### NO DATA WRITTEN TO FILE ###")
+    print("\n### ERROR WHILE FETCHING DATA ###")
+    print("### NO DATA WRITTEN TO FILE ###")
 
 
