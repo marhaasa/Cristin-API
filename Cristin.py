@@ -49,7 +49,7 @@ if len(cleanData.index) == int(totalHits):
         print(f'{index} of {totalHits} publications written\r', end="")
         details = requests.get(str(url))
         flatDetails = flatDetails.append(json_normalize(json.loads(details.text)), sort=True)
-    print(f'{totalHits} of {totalHits} written\r', end="")
+    print(f'\r{totalHits} of {totalHits} written', end="")
     flatDetails.to_excel("Publications.xlsx", index=False)
     print("=== Publications.xlsx complete ===")
 else:
