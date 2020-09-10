@@ -51,7 +51,7 @@ if len(cleanData.index) == int(totalHits):
         flatDetails = flatDetails.append(json_normalize(json.loads(details.text)), sort=True)
     print(f'\r{totalHits} of {totalHits} written', end="")
     flatDetails.to_excel("Publications.xlsx", index=False)
-    print("=== Publications.xlsx complete ===")
+    print("\n=== Publications.xlsx complete ===")
 else:
     print("\n### ERROR WHILE FETCHING DATA ###")
     print("### NO DATA WRITTEN TO FILE ###")
